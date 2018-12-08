@@ -18,14 +18,14 @@ if [ ! -e $NODE_VERSION_NUM ] ; then
     echo "FROM node:$NODE_VERSION_NUM"
 fi
 
-# if [ ! -e $PYTHON_VERSION_NUM ] ; then
-#     echo "RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION_NUM/Python-$PYTHON_VERSION_NUM.tgz && \
-#     tar xzf Python-$PYTHON_VERSION_NUM.tgz && \
-#     rm Python-$PYTHON_VERSION_NUM.tgz && \
-#     cd Python-$PYTHON_VERSION_NUM && \
-#     ./configure && \
-#     make install"
-# fi
+if [ ! -e $PYTHON_VERSION_NUM ] ; then
+    echo "RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION_NUM/Python-$PYTHON_VERSION_NUM.tgz && \
+    tar xzf Python-$PYTHON_VERSION_NUM.tgz && \
+    rm Python-$PYTHON_VERSION_NUM.tgz && \
+    cd Python-$PYTHON_VERSION_NUM && \
+    ./configure && \
+    make install"
+fi
 
 # if [ ! -e $PHP_VERSION_NUM ] ; then
 #     wget "http://php.net/distributions/php-${PHP_VERSION_NUM}.tar.xz"
