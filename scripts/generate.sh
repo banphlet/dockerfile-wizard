@@ -93,14 +93,6 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 EOF
 fi
 
-#install openssh 1.1.1
-echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz 
-            tar xzvf openssl-1.1.1a.tar.gz 
-              cd openssl-1.1.1a
-              ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)'
-              make
-             make install"
-
 # install bats for testing
 echo "RUN git clone https://github.com/sstephenson/bats.git \
   && cd bats \
