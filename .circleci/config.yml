@@ -37,6 +37,7 @@ image_config: &image_config
 version: 2
 jobs:
   build:
+    working_directory: ~/project/MyApp
     machine: true
     environment:
       <<: *image_config
