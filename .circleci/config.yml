@@ -43,10 +43,10 @@ jobs:
       <<: *image_config
 
     steps:
-      - checkout
+      - checkout 
 
 
-      - run: cd ~/project/MyApp && bash ./scripts/generate.sh > Dockerfile
+      - run: cd ~/project/MyApp && chmod +x bash ./scripts/generate.sh && bash ./scripts/generate.sh > Dockerfile
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
