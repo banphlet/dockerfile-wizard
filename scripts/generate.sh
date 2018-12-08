@@ -15,7 +15,7 @@ if [ ! -e $RUBY_VERSION_NUM ] ; then
 fi
 
 if [ ! -e $NODE_VERSION_NUM ] ; then
-    echo "RUN docker pull node:$NODE_VERSION_NUM"
+    echo "FROM node:$NODE_VERSION_NUM"
 fi
 
 if [ ! -e $PYTHON_VERSION_NUM ] ; then
