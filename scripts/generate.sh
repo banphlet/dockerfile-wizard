@@ -18,14 +18,14 @@ if [ ! -e $NODE_VERSION_NUM ] ; then
     echo "FROM node:$NODE_VERSION_NUM"
 fi
 
-if [ ! -e $PYTHON_VERSION_NUM ] ; then
-    echo "RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION_NUM/Python-$PYTHON_VERSION_NUM.tgz && \
-    tar xzf Python-$PYTHON_VERSION_NUM.tgz && \
-    rm Python-$PYTHON_VERSION_NUM.tgz && \
-    cd Python-$PYTHON_VERSION_NUM && \
-    ./configure && \
-    make install"
-fi
+# if [ ! -e $PYTHON_VERSION_NUM ] ; then
+#     echo "RUN wget https://www.python.org/ftp/python/$PYTHON_VERSION_NUM/Python-$PYTHON_VERSION_NUM.tgz && \
+#     tar xzf Python-$PYTHON_VERSION_NUM.tgz && \
+#     rm Python-$PYTHON_VERSION_NUM.tgz && \
+#     cd Python-$PYTHON_VERSION_NUM && \
+#     ./configure && \
+#     make install"
+# fi
 
 # if [ ! -e $PHP_VERSION_NUM ] ; then
 #     wget "http://php.net/distributions/php-${PHP_VERSION_NUM}.tar.xz"
@@ -63,11 +63,7 @@ if [[ $MYSQL_CLIENT = "true" ]] ; then
 fi
 
 if [[ $MONGODB_CLIENT = "true" ]] ; then 
-    echo "RUN   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' > /etc/apt/sources.list.d/mongodb.list && \
-    apt-get update && \
-    apt-get install -y mongodb-org && \
-    rm -rf /var/lib/apt/lists/*"
+    echo "RUN from mongo:3.1"
 
 fi
 
