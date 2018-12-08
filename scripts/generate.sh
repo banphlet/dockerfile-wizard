@@ -39,7 +39,7 @@ fi
 #     wget "http://php.net/distributions/php-${PHP_VERSION_NUM}.tar.xz"
 # fi
 
-if [ $JAVA = "true" ] ; then
+if [[ $JAVA = "true" ]] ; then
 cat << EOF
 RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \\
@@ -66,11 +66,11 @@ RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
 EOF
 fi
 
-if [ $MYSQL_CLIENT = "true" ] ; then
+if [[ $MYSQL_CLIENT = "true" ]] ; then
     echo "RUN apt-get -y install mysql-client"
 fi
 
-if [ $MONGODB_CLIENT = "true" ] ; then 
+if [[ $MONGODB_CLIENT = "true" ]] ; then 
     echo "RUN   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' > /etc/apt/sources.list.d/mongodb.list && \
     apt-get update && \
@@ -79,11 +79,11 @@ if [ $MONGODB_CLIENT = "true" ] ; then
 
 fi
 
-if [ $POSTGRES_CLIENT = "true" ] ; then
+if [[ $POSTGRES_CLIENT = "true" ]] ; then
     echo "RUN apt-get -y install postgresql-client"
 fi
 
-if [ $DOCKERIZE = "true" ] ; then
+if [[ $DOCKERIZE = "true" ]] ; then
 DOCKERIZE_VERSION="v0.6.1"
 
 cat << EOF
@@ -92,6 +92,14 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 EOF
 fi
+
+#install openssh 1.1.1
+echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz 
+            tar xzvf openssl-1.1.1a.tar.gz 
+              cd openssl-1.1.1a
+              ./config
+              make
+             make install"
 
 # install bats for testing
 echo "RUN git clone https://github.com/sstephenson/bats.git \
@@ -107,7 +115,7 @@ echo "RUN perl -MCPAN -e 'install XML::Generator'"
 # install lsb-release, etc., for testing linux distro
 echo "RUN apt-get update && apt-get -y install lsb-release unzip"
 
-if [ $BROWSERS = "true" ] ; then
+if [[ $BROWSERS = "true" ]] ; then
 cat << EOF
 RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \\
