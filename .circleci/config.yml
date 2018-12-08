@@ -19,7 +19,7 @@ image_config: &image_config
 
   NODE_VERSION_NUM: 8.11.3
 
-  PYTHON_VERSION_NUM: 3.7.1
+  PYTHON_VERSION_NUM: false
 
   JAVA: false
 
