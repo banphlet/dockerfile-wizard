@@ -81,7 +81,7 @@ if [[ $OPEN_SSL == "true" ]] ; then
     # &&  make \
     # &&  make install"
 
-    echo "RUN openssl version"
+    echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz"
 
 fi
 
