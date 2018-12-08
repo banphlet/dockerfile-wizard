@@ -43,7 +43,9 @@ jobs:
       <<: *image_config
 
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
+
 
       - run: bash $CIRCLE_WORKING_DIRECTORY/scripts/generate.sh > Dockerfile
 
