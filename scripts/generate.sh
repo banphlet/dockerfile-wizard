@@ -94,11 +94,11 @@ EOF
 fi
 
 # install bats for testing
-echo "RUN git clone https://github.com/sstephenson/bats.git \
-  && cd bats \
-  && ./install.sh /usr/local \
-  && cd .. \
-  && rm -rf bats"
+# echo "RUN git clone https://github.com/sstephenson/bats.git \
+#   && cd bats \
+#   && ./install.sh /usr/local \
+#   && cd .. \
+#   && rm -rf bats"
 
 # install dependencies for tap-to-junit
 echo "RUN perl -MCPAN -e 'install TAP::Parser'"
