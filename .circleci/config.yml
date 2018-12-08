@@ -43,11 +43,13 @@ jobs:
       <<: *image_config
 
     steps:
-      - checkout:
-          path: ~/project
+      - checkout
 
-
-      - run: bash scripts/generate.sh > Dockerfile
+      - run: 
+            name: Generator 
+            working_directory: ~/project/MyApp
+            command:
+              bash ./scripts/generate.sh > Dockerfile
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
