@@ -70,6 +70,15 @@ if [ $MYSQL_CLIENT = "true" ] ; then
     echo "RUN apt-get -y install mysql-client"
 fi
 
+if [ $MONGODB_CLIENT = "true" ] ; then 
+    echo "RUN   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' > /etc/apt/sources.list.d/mongodb.list && \
+    apt-get update && \
+    apt-get install -y mongodb-org && \
+    rm -rf /var/lib/apt/lists/*"
+
+fi
+
 if [ $POSTGRES_CLIENT = "true" ] ; then
     echo "RUN apt-get -y install postgresql-client"
 fi
@@ -83,6 +92,14 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 EOF
 fi
+
+#install openssh 1.1.1
+echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz 
+            tar xzvf openssl-1.1.1a.tar.gz 
+              cd openssl-1.1.1a
+              ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)'
+              make
+             make install"
 
 # install bats for testing
 echo "RUN git clone https://github.com/sstephenson/bats.git \
