@@ -63,7 +63,7 @@ if [[ $MYSQL_CLIENT = "true" ]] ; then
 fi
 
 if [[ $MONGODB_CLIENT = "true" ]] ; then 
-    echo "RUN FROM mongo"
+    echo "RUN FROM circleci/mongo:latest"
 
 fi
 
