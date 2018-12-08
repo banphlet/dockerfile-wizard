@@ -63,7 +63,7 @@ if [[ $MYSQL_CLIENT = "true" ]] ; then
 fi
 
 if [[ $MONGODB_CLIENT = "true" ]] ; then 
-    echo "RUN from mongo:3.1"
+    echo "RUN FROM mongo"
 
 fi
 
