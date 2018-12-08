@@ -33,7 +33,7 @@ image_config: &image_config
 
   BROWSERS: false
 
-  OPEN_SSH: true
+  OPEN_SSH: false
   
 
 version: 2

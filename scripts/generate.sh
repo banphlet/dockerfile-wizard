@@ -72,11 +72,11 @@ if [[ $POSTGRES_CLIENT = "true" ]] ; then
 fi
 if [[ $OPEN_SSH == "true" ]] ; then 
     #install openssh 1.1.1
-    echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz 
-     && tar xzvf openssl-1.1.1a.tar.gz 
-     && cd openssl-1.1.1a  
-    && ./config 
-    &&  make 
+    echo " RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz \
+     && tar xzvf openssl-1.1.1a.tar.gz \
+     && cd openssl-1.1.1a  \
+    && ./config \
+    &&  make \
     &&  make install"
 
 fi
