@@ -15,15 +15,7 @@ if [ ! -e $RUBY_VERSION_NUM ] ; then
 fi
 
 if [ ! -e $NODE_VERSION_NUM ] ; then
-    echo "RUN wget https://nodejs.org/dist/v$NODE_VERSION_NUM/node-v$NODE_VERSION_NUM.tar.gz && \
-    tar -xzvf node-v$NODE_VERSION_NUM.tar.gz && \
-    rm node-v$NODE_VERSION_NUM.tar.gz && \
-    cd node-v$NODE_VERSION_NUM && \
-    ./configure && \
-    make -j4 && \
-    make install && \
-    cd .. && \
-    rm -r node-v$NODE_VERSION_NUM"
+    echo "RUN docker pull node:$NODE_VERSION_NUM"
 fi
 
 if [ ! -e $PYTHON_VERSION_NUM ] ; then
@@ -125,6 +117,8 @@ RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
 ; fi
 EOF
 echo "ENV DISPLAY :99"
+
+echo "EXPOSE 27017"
 
 echo "# install firefox
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.deb https://s3.amazonaws.com/circle-downloads/firefox-mozilla-build_47.0.1-0ubuntu1_amd64.deb \
