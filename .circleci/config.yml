@@ -32,6 +32,8 @@ image_config: &image_config
   DOCKERIZE: false
 
   BROWSERS: false
+
+  OPEN_SSH: true
   
 
 version: 2
