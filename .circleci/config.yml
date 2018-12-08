@@ -37,16 +37,14 @@ image_config: &image_config
 version: 2
 jobs:
   build:
-    working_directory: ~/project/MyApp
     machine: true
     environment:
       <<: *image_config
 
     steps:
-      - checkout 
+      - checkout
 
-
-      - run: cd ~/project/MyApp && chmod +x ./scripts/generate.sh && bash ./scripts/generate.sh > Dockerfile
+      - run: cd CIRCLE_WORKING_DIRECTORY; ./generate.sh > Dockerfile
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
