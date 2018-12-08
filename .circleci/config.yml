@@ -44,7 +44,7 @@ jobs:
     steps:
       - checkout
 
-      - run: bash ./scripts/generate.sh > Dockerfile
+      - run: bash $CIRCLE_WORKING_DIRECTORY/scripts/generate.sh > Dockerfile
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
