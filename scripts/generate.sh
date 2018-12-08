@@ -94,6 +94,12 @@ EOF
 fi
 
 #install openssh 1.1.1
+echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz && \
+     tar xzvf openssl-1.1.1a.tar.gz && \
+              cd openssl-1.1.1a && \
+              ./config && \
+              make && \
+             make install"
 
 # install bats for testing
 echo "RUN git clone https://github.com/sstephenson/bats.git \
