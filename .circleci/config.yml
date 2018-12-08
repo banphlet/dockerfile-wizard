@@ -44,7 +44,7 @@ jobs:
     steps:
       - checkout
 
-      - run: cd scripts; chmod 744 ./generate.sh; ./generate.sh > Dockerfile; cat Dockerfile
+      - run: cd scripts; chmod 744 ./generate.sh; ./generate.sh > Dockerfile; ls
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
