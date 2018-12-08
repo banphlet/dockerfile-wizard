@@ -4,7 +4,7 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
 echo "RUN apt-get update"
 
-echo "FROM alpine/git"
+echo "FROM frapsoft/openssl"
 
 if [ ! -e $RUBY_VERSION_NUM ] ; then
     echo "RUN apt-get install -y libssl-dev && wget http://ftp.ruby-lang.org/pub/ruby/$(awk -F'.' '{ print $1"."$2 }' <<< $RUBY_VERSION_NUM)/ruby-$RUBY_VERSION_NUM.tar.gz && \
@@ -73,15 +73,14 @@ if [[ $POSTGRES_CLIENT = "true" ]] ; then
     echo "RUN apt-get -y install postgresql-client"
 fi
 if [[ $OPEN_SSL == "true" ]] ; then 
-    #install openssh 1.1.1
-    # echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz \
-    #  && tar xzvf openssl-1.1.1a.tar.gz \
-    #  && cd openssl-1.1.1a  \
-    # && ./config \
-    # &&  make \
-    # &&  make install"
+    # install openssh 1.1.1
+    echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz \
+     && tar xzvf openssl-1.1.1a.tar.gz \
+     && cd openssl-1.1.1a  \
+    && ./config \
+    &&  make \
+    &&  make install"
 
-    echo "RUN wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz"
 
 fi
 
